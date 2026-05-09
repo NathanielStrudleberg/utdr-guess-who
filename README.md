@@ -1,6 +1,11 @@
 # UTDR Guess Who Unlimited
 
-[Play the game!](https://wearsnomask.github.io/utdr-guess-who/)
+## Quick Start
+
+[Play the game online now](https://wearsnomask.github.io/utdr-guess-who/) or [download it from the project releases](https://github.com/wearsnomask/utdr-guess-who/releases/latest) (you can also download previous versions of it here if you'd prefer). Note that the downloaded version will likely trigger a security warning about installing an untrusted program on your system; you can always just play the online version if you want to be safe.
+
+
+## About
 
 This is the repo for a Guess Who game for sets of Undertale and Deltarune characters, based on the original concept by Seek's Stuff: https://seeksstuff.itch.io/deltarune-guess-who.
 
@@ -8,9 +13,10 @@ This rewrites the original game to function as a web app, for better cross-platf
 
 This is a fan game of a fan game, and isn't officially associated with Toby Fox and team or Seek's Stuff. Undertale and Deltarune characters are used under the broad permission Toby Fox has granted for non-commercial fangames.
 
+
 ## Adding Character Sets
 
-This game is designed to make it as easy as possible to extend it to add in new sets of characters to play with. Here's how to do it.
+This game is designed to make it as easy as possible to extend it to add in new sets of characters to play with. Here's how to do it:
 
 ### Designing the set
 
@@ -24,7 +30,7 @@ Try to get original sprites if possible, for the best quality - pixel art can ge
 
 ### Adding it to the game
 
-To be able to add any character sets to the game, fork this project, and set it up to be served publicly via GitHub Pages, using the option to deploy via a workflow (using the existing "static.yml" workflow). If you aren't familiar with using GitHub Pages, a good tutorial on using it is provided by The Odin Project here: https://www.theodinproject.com/lessons/foundations-recipes#viewing-your-project-on-the-web. Or if all of this working with a repo is something you aren't familiar with, other tutorials on this site can help you with that too.
+To be able to add any character sets to the game, fork this project, and set it up to be served publicly via GitHub Pages, using the option to deploy via a workflow (using the existing "static.yml" workflow - note that this workflow includes an extra step in it to run a script and set up some needed files). If you aren't familiar with using GitHub Pages, a good tutorial on using it is provided by The Odin Project here: https://www.theodinproject.com/lessons/foundations-recipes#viewing-your-project-on-the-web. Or if all of this working with a repo is something you aren't familiar with, other tutorials on this site can help you with that too.
 
 Then, edit the repo by adding in a folder with your character set in the "public/character-sets" folder. The name of the folder will be used exactly as it for the name of the character set. If you want (but you probably don't need to worry about this), you can add an index before the name of the character set in the folder to affect how it's sorted when the options are given to the player, e.g. folders named `1-Undertale` and `2-Deltarune` will put the Undertale character set first, whereas without the indices it would sort alphabetically with Deltarune first.
 
@@ -52,6 +58,30 @@ Then, look at the URL you get. In this case it will be: `https://undertale.wiki/
 ```
 
 You can look at the existing "config.json" files in the character sets in this repo for other examples.
+
+
+## Notes for Developers
+
+The online version of this game is *mostly* served as-is from the `public` folder, with the exception of running the BASH script `scripts/make_meta.sh` first to generate some necessary files (listing the available character sets and characters so that the game can find them). If you're developing the game locally, you'll need to run this script after making any changes to the character sets or characters so that they'll be discoverable when you test it.
+
+The installable version of this game is built using [Tauri](https://github.com/tauri-apps/tauri). If you wish to test this locally, you'll need to [install Node Package Manager (npm)](https://www.theodinproject.com/lessons/foundations-installing-node-js). Once you have npm installed, to install required packages for this project, navigate to the project directory and run:
+
+```bash
+npm install
+```
+
+You can then run a development server to test the installable version of the game with:
+
+```bash
+npm run tauri dev
+```
+
+And build it with:
+
+```bash
+npm run tauri build
+```
+
 
 ## Frequently Asked Questions
 
@@ -83,12 +113,18 @@ The following features have been added:
 
 Yes, please do! This project has a permissive license, so you don't even need to ask me to go ahead.
 
+### Are there any differences between the online and downloadable versions of the game?
+
+No substantial differences, just some minor necessary styling differences due to the limitations of the packager ([Tauri](https://github.com/tauri-apps/tauri)) for the downloadable version. You can also play older versions of the game with the downloadable version, and it of course lets you play offline and will load a bit faster. But this of course comes with the drawback of needing to install it and trusting it.
+
+
 ## Contact/Socials
 
 **Charlotte Wears No Mask**
 
 - https://x.com/LadyWearsNoMask
 - https://bsky.app/profile/ladywearsnomask.bsky.social
+
 
 ## Credits
 
@@ -109,7 +145,7 @@ Yes, please do! This project has a permissive license, so you don't even need to
 
 **Special Thanks:**
 
-* Mysteri Gii - Testing, feedback, and support
+* Mysteri Gii (Chief Encouragement Officer) - Testing, feedback, and support
 
   * https://x.com/MysteryGii0
   * https://bsky.app/profile/mysterygii0.bsky.social

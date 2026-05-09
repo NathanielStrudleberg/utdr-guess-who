@@ -1,6 +1,17 @@
 # Changelog
 
-## v1.0
+## v1.0.1
+
+## Styling/UX Changes
+
+- Added custom icon for site
+
+### Miscellaneous Changes
+
+- Added ability to build the game for installation via [Tauri](https://github.com/tauri-apps/tauri), with a new "Publish" workflow to publish it as a Release on GitHub
+  - This required some changes to the code for the game, none of which should affect the web version. The Tauri version will have some minor stylistic differences where necessary
+
+## v1.0.0
 
 Initial public release. New features compared to the original game by Seek:
 
